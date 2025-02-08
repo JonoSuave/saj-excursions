@@ -12,9 +12,10 @@ import {
 } from "./ui/navigation-menu";
 import { Button } from "./ui/button";
 import { cn } from "../lib/utils";
+import type { StaticImageData } from "next/image";
 
 interface NavigationProps {
-  logo?: string;
+  logo?: string | StaticImageData;
   menuItems?: Array<{
     label: string;
     href: string;
@@ -23,8 +24,10 @@ interface NavigationProps {
   onContactClick?: () => void;
 }
 
+const defaultLogo = logo;
+
 const Navigation = ({
-  logo = "Wellness Retreat",
+  logo = defaultLogo,
   menuItems = [
     {
       label: "Experiences",
